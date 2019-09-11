@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario de Envío</title>
+</head>
+<body>
+
+<div id="app">
+
+    <p>Saldo actual: {{ saldo }} </p>
+ <form action="" v-on:submit.prevent="onSubmit">
+    <fieldset>
+        <label for="address">BTC Address de destino</label>
+        <input type="text" id="address" name="address" v-model="address">
+    </fieldset>
+
+    <fieldset>
+        <label for="amount">Cantidad a enviar</label>
+        <input type="number" id="amount" name="amount" v-model.number="totalEnvio">
+    </fieldset>
+
+    <p>Total a enviar: {{ totalEnvio }}</p>
+    <p>Comisión por envío: {{ com }} </p>
+    <p>Total a descontar de la billetera: {{ calculo() }}</p>
+
+    <button type="submit" id="submit" v-on:click=envio()> Enviar</button>
+
+ </form>
+    
+
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+
+</div>
+</body>
+</html>
