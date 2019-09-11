@@ -11,7 +11,13 @@
 <div id="app">
 
     <p>Saldo actual: {{ saldo }} </p>
- <form action="" v-on:submit.prevent="onSubmit">
+ <!--<form action="" v-on:submit.prevent="onSubmit">-->
+ <form @submit="checkForm"
+        action="https://vuejs.org/"
+        method="post"
+        novalidate="true">
+
+        
     <fieldset>
         <label for="address">BTC Address de destino</label>
         <input type="text" id="address" name="address" v-model="address">
@@ -26,8 +32,15 @@
     <p>Comisión por envío: {{ com }} </p>
     <p>Total a descontar de la billetera: {{ calculo() }}</p>
 
-    <button type="submit" id="submit" v-on:click=envio()> Enviar</button>
+ <!--    <button type="submit" id="submit" v-on:click=checkForm()> Enviar</button> -->
+ <button type="submit" id="submit" value="Submit"> Enviar</button>
 
+    <p v-if="errors.length">
+            <b>Por favor corrija los siguientes errores:</b>
+            <ul>
+              <li v-for="error in errors">{{ error }}</li>
+            </ul>
+          </p>
  </form>
     
 
